@@ -1,5 +1,25 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  
+  div.container
+    h1= title
+    .messageContainer 
+      each chat in chats
+        .message
+          p= chat.message    
+          if loggedIn=== true && user.membership_status=== true
+            p= chat.user.first_name
+          p= chat.timestamp.getHours().toString() + ":" + chat.timestamp.getMinutes().toString() 
+          p= chat.timestamp.getFullYear().toString() +"-"+ chat.timestamp.getMonth().toString() + "-" + chat.timestamp.getDate().toString() + " "
+    .buttonContainer
+      if loggedIn=== true
+        if user.membership_status=== true
+          button(onclick="location.href='/newMessage'" type="button") New Message
+          button(onclick="location.href='/logout'" type="button") Logout
+        if user.membership_status!== true
+          button(onclick="location.href='/secret'" type="button") Secret code
+          button(onclick="location.href='/logout'" type="button") Logout
+      else
+        button(onclick="location.href='/login'" type="button") Login
+        button(onclick="location.href='/signup'" type="button") Sign-Up

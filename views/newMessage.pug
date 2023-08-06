@@ -1,0 +1,11 @@
+extends layout 
+
+block content 
+    title=title
+    p= "Enter your message below"
+    form(action="/newMessage" method="POST")
+        .inputField
+            label(for="message") Message:
+            input(type="text" name="message")
+        .inputField
+            input(type="submit" value="Submit")

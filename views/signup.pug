@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    title=title
+    form(action="/signup" method="POST")
+        .inputField
+            label(for="first_name") First Name:
+            input(type="text" name="first_name")
+        .inputField
+            label(for="last_name") Last Name:
+            input(type="text" name="last_name")
+        .inputField
+            label(for="username") Username:
+            input(type="text" name="username")
+        .inputField
+            label(for="password") Password:
+            input(type="password" name="password")
+        .inputField
+            label(for="passwordConf") Confirm Password:
+            input(type="password" name="passwordConf")
+        .inputField
+            input(type="submit" value="Sign Up")
